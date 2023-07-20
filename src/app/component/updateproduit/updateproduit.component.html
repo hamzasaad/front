@@ -1,0 +1,83 @@
+<div class="col-lg-8 col-md-12">
+    <div>
+        <h4 class="mt-4 mt-lg-0"><strong> Maintenance detail </strong></h4>
+
+        <p class="my-4"><a
+                class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">Nom </a><a
+                class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{produit.nom}}</a>
+        </p>
+        <p class="my-4"><a
+                class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">Prix
+             
+                : </a><a
+                class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{produit.prix}}</a>
+        </p>
+        <p class="my-4"><a
+                class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">Quantite
+
+                : </a><a
+                class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{produit.quantite}}
+            </a></p>
+        
+
+
+    </div>
+</div>
+<div class="p-5">
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4" >Update Machine</h1>
+    </div>
+    <form class="user" [formGroup]="formProduit" (ngSubmit)="UpdateProduit()">
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                Nom
+                <input type="text" class="form-control form-control-user " formControlName="nom"
+                    id="exampleInputPassword" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && f['nom'].errors }">
+                <div *ngIf="submitted && f['nom'].errors" class="invalid-feedback">
+                    <div *ngIf="f['nom'].errors['required']">nom est vide</div>
+                </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                Prix
+                <input type="nombre" class="form-control form-control-user " formControlName="prix"
+                    id="exampleInputPassword" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && f['prix'].errors }">
+                <div *ngIf="submitted && f['prix'].errors" class="invalid-feedback">
+                    <div *ngIf="f['prix'].errors['required']">prix est vide</div>
+                    <div *ngIf="f['prix'].errors['required']">prix n'est pas negative</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group row">
+
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                quantite
+                <input type="nombre" class="form-control form-control-user " formControlName="quantite"
+                    id="exampleInputPassword" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && f['quantite'].errors }">
+                <div *ngIf="submitted && f['quantite'].errors" class="invalid-feedback">
+                    <div *ngIf="f['quantite'].errors['required']">quantite est vide</div>
+                    <div *ngIf="f['quantite'].errors['min']">quantite n'est pas negative</div>
+                </div>
+            </div>
+            
+            
+        </div>
+
+
+
+        <div class="col-sm-6">
+            <div class="text-center">
+                <a class="btn btn-primary btn-user btn-block" (click)="UpdateProduit() ">
+                    Modifier Produit
+                </a>
+            </div>
+        </div>
+        <hr>
+
+    </form>
+    <hr>
+
+</div>

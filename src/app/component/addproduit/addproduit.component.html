@@ -1,0 +1,58 @@
+<div class="p-5">
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Ajouter Produit!</h1>
+    </div>
+    <form class="user" [formGroup]="formProduct" (ngSubmit)="AjouterProduit()">
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                Nom
+                <input type="text" class="form-control form-control-user " formControlName="nom"
+                    id="exampleInputPassword" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && f['nom'].errors }">
+                <div *ngIf="submitted && f['nom'].errors" class="invalid-feedback">
+                    <div *ngIf="f['nom'].errors['required']">nom est vide</div>
+                </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                Prix
+                <input type="nombre" class="form-control form-control-user " formControlName="prix"
+                    id="exampleInputPassword" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && f['prix'].errors }">
+                <div *ngIf="submitted && f['prix'].errors" class="invalid-feedback">
+                    <div *ngIf="f['prix'].errors['required']">prix est vide</div>
+                    <div *ngIf="f['prix'].errors['required']">prix n'est pas negative</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group row">
+
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                quantite
+                <input type="nombre" class="form-control form-control-user " formControlName="quantite"
+                    id="exampleInputPassword" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && f['quantite'].errors }">
+                <div *ngIf="submitted && f['quantite'].errors" class="invalid-feedback">
+                    <div *ngIf="f['quantite'].errors['required']">quantite est vide</div>
+                    <div *ngIf="f['quantite'].errors['min']">quantite n'est pas negative</div>
+                </div>
+            </div>
+            
+            
+        </div>
+
+
+
+        <div class="col-sm-6">
+            <div class="text-center">
+                <a class="btn btn-primary btn-user btn-block" (click)="AjouterProduit() ">
+                    Ajouter Produit
+                </a>
+            </div>
+        </div>
+        <hr>
+
+    </form>
+    <hr>
+
+</div>
